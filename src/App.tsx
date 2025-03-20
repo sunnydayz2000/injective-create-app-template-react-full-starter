@@ -5,7 +5,7 @@ type Props = {};
 
 const App = (props: Props) => {
   return (
-    <div>
+    <div className='bg-gray-900 text-white'>
       <InjectiveWelcome />
     </div>
   );

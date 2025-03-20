@@ -18,7 +18,18 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "types": [
+      "@injectivelabs/networks",
+      "@injectivelabs/utils",
+      "@injectivelabs/sdk-ts",
+      "@injectivelabs/exceptions",
+      "@injectivelabs/ts-types",
+      "@injectivelabs/wallet-base",
+      "@injectivelabs/wallet-core",
+      "@injectivelabs/wallet-strategy"
+    ]
   },
   "include": ["src", "vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

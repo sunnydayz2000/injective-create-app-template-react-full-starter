@@ -1,5 +1,3 @@
-//
-
 import { create } from "zustand";
 import { getAddresses } from "../app/services/wallet";
 import { getInjectiveAddress } from "@injectivelabs/sdk-ts";
