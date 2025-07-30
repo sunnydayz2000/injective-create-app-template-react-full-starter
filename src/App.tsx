@@ -215,16 +215,16 @@ const App: React.FC = () => {
             console.log("=== RESET COMPLETE ===");
         } catch (error) {
             console.error("=== RESET ERROR ===");
-            console.error("Error type:", error.constructor.name);
-            console.error("Error message:", error.message);
+            console.error("Error type:", (error as Error).constructor.name);
+            console.error("Error message:", (error as Error).message);
             console.error("Full error object:", error);
 
-            if (error.message.includes("not found")) {
+            if ((error as Error).message.includes("not found")) {
                 console.error("⚠️ Account not found - you need testnet INJ tokens!");
                 console.error("   Get tokens at: https://faucet.testnet.injective.network/");
             }
 
-            alert("Failed to reset: " + error.message);
+            alert("Failed to reset: " + (error as Error).message);
         } finally {
             setIsLoading(false);
             console.log("=== RESET FLOW ENDED ===\n");
