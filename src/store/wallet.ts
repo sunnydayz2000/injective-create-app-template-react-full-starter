@@ -8,7 +8,7 @@ type WalletState = {
   disconnectWallet: () => void;
 };
 
-export const useWalletStore = create<WalletState>()((set, get) => ({
+export const useWalletStore = create<WalletState>()((set) => ({
   injectiveAddress: "",
   ethereumAddress: "",
   connectWallet: async () => {

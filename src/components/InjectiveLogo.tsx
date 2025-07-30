@@ -1,8 +1,4 @@
-import React from "react";
-
-type Props = {};
-
-const InjectiveLogo = (props: Props) => {
+const InjectiveLogo = () => {
   return (
       <svg
           viewBox='100 100 400 400'

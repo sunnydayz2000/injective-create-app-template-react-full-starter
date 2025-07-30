@@ -62,7 +62,7 @@ const App: React.FC = () => {
             setCount(currentCount);
         } catch (error) {
             console.error("Failed to fetch count:", error);
-            console.error("Error details:", error.message);
+            console.error("Error details:", (error as Error).message);
             // Don't set to 0, keep current value
         }
     };
@@ -139,20 +139,20 @@ const App: React.FC = () => {
                 fetchCount();
             }, 3000);
 
-            console.log("8. State updated - new count:", count + 1);
+            console.log("8. State updated - new count:", (count ?? 0) + 1);
             console.log("=== INCREMENT COMPLETE ===");
         } catch (error) {
             console.error("=== INCREMENT ERROR ===");
-            console.error("Error type:", error.constructor.name);
-            console.error("Error message:", error.message);
+            console.error("Error type:", (error as Error).constructor.name);
+            console.error("Error message:", (error as Error).message);
             console.error("Full error object:", error);
 
-            if (error.message.includes("not found")) {
+            if ((error as Error).message.includes("not found")) {
                 console.error("⚠️ Account not found - you need testnet INJ tokens!");
                 console.error("   Get tokens at: https://faucet.testnet.injective.network/");
             }
 
-            alert("Failed to increment: " + error.message);
+            alert("Failed to increment: " + (error as Error).message);
         } finally {
             setIsLoading(false);
             console.log("=== INCREMENT FLOW ENDED ===\n");

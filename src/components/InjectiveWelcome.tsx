@@ -1,10 +1,7 @@
-import React from "react";
 import WalletConnect from "./App/WalletConnect";
 import InjectiveLogo from "./InjectiveLogo";
 
-type Props = {};
-
-const InjectiveWelcome = (props: Props) => {
+const InjectiveWelcome = () => {
     return (
         <div>
             <div className='absolute inset-x-0 flex justify-end p-4'>
