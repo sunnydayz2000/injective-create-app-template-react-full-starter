@@ -1,25 +1,40 @@
+// components/App/WalletConnect.tsx
 import React from "react";
 import Button from "./Button";
 import { useWalletStore } from "../../store/wallet";
 
-type Props = {};
+const WalletConnect: React.FC = () => {
+    const { injectiveAddress, connectWallet, disconnectWallet } = useWalletStore();
 
-const WalletConnect = (props: Props) => {
-  const { injectiveAddress, connectWallet } = useWalletStore();
+    const formattedAddress = injectiveAddress
+        ? `${injectiveAddress.slice(0, 5)}...${injectiveAddress.slice(-5)}`
+        : "";
 
-  const formattedAddress = `${injectiveAddress.slice(
-    0,
-    5
-  )}...${injectiveAddress.slice(-5)}`;
+    const handleConnect = async () => {
+        try {
+            await connectWallet();
+        } catch (err) {
+            console.error("Failed to connect wallet:", err);
+            alert("Failed to connect Keplr wallet. Please make sure Keplr is installed.");
+        }
+    };
 
-  function handleConnectWallet() {
-    connectWallet().catch(() => alert("Error"));
-  }
-  return (
-    <Button onClick={handleConnectWallet}>
-      {injectiveAddress ? formattedAddress : "Connect Wallet"}
-    </Button>
-  );
+    if (injectiveAddress) {
+        return (
+            <div className="flex items-center gap-2">
+        <span className="text-green-200 text-sm">
+          🌌 {formattedAddress}
+        </span>
+                <Button onClick={disconnectWallet}>Disconnect</Button>
+            </div>
+        );
+    }
+
+    return (
+        <Button onClick={handleConnect}>
+            Connect Keplr
+        </Button>
+    );
 };
 
 export default WalletConnect;
